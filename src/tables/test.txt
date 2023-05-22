@@ -1,0 +1,185 @@
+-- output from jyve_test: \d+ job
+                                                                                    Table "public.job"
+                      Column                      |           Type           | Collation | Nullable |             Default             | Storage  | Compression | Stats target | Description
+--------------------------------------------------+--------------------------+-----------+----------+---------------------------------+----------+-------------+--------------+-------------
+ id                                               | integer                  |           | not null | nextval('job_id_seq'::regclass) | plain    |             |              |
+ type                                             | character varying(32)    |           | not null |                                 | extended |             |              |
+ claim_method                                     | character varying(16)    |           |          |                                 | extended |             |              |
+ data                                             | jsonb                    |           |          |                                 | extended |             |              |
+ is_template                                      | boolean                  |           | not null |                                 | plain    |             |              |
+ is_shared                                        | boolean                  |           | not null |                                 | plain    |             |              |
+ is_paper                                         | boolean                  |           | not null |                                 | plain    |             |              |
+ estimated_time                                   | integer                  |           |          |                                 | plain    |             |              |
+ cases                                            | integer                  |           |          |                                 | plain    |             |              |
+ brand_fee                                        | numeric(6,2)             |           | not null |                                 | main     |             |              |
+ jyver_payout                                     | numeric(6,2)             |           | not null |                                 | main     |             |              |
+ description                                      | text                     |           | not null |                                 | extended |             |              |
+ jyver_comments                                   | text                     |           |          |                                 | extended |             |              |
+ name                                             | character varying(256)   |           | not null |                                 | extended |             |              |
+ started_location                                 | geometry(Point,4326)     |           |          |                                 | main     |             |              |
+ completed_location                               | geometry(Point,4326)     |           |          |                                 | main     |             |              |
+ enable_in_merch                                  | boolean                  |           | not null |                                 | plain    |             |              |
+ job_start_after                                  | timestamp with time zone |           |          |                                 | plain    |             |              |
+ job_finish_before                                | timestamp with time zone |           |          |                                 | plain    |             |              |
+ date_reserved                                    | timestamp with time zone |           |          |                                 | plain    |             |              |
+ date_started                                     | timestamp with time zone |           |          |                                 | plain    |             |              |
+ date_completed                                   | timestamp with time zone |           |          |                                 | plain    |             |              |
+ date_published                                   | timestamp with time zone |           |          |                                 | plain    |             |              |
+ date_canceled                                    | timestamp with time zone |           |          |                                 | plain    |             |              |
+ date_reactivated                                 | timestamp with time zone |           |          |                                 | plain    |             |              |
+ claimable_at                                     | timestamp with time zone |           |          |                                 | plain    |             |              |
+ external_identifier                              | character varying(256)   |           |          |                                 | extended |             |              |
+ is_active                                        | boolean                  |           | not null |                                 | plain    |             |              |
+ is_archived                                      | boolean                  |           | not null |                                 | plain    |             |              |
+ created_at                                       | timestamp with time zone |           |          |                                 | plain    |             |              |
+ updated_at                                       | timestamp with time zone |           |          |                                 | plain    |             |              |
+ version                                          | smallint                 |           |          |                                 | plain    |             |              |
+ unique_id                                        | uuid                     |           |          |                                 | plain    |             |              |
+ jyver_job_id                                     | character varying(8)     |           |          |                                 | extended |             |              |
+ brand_id                                         | integer                  |           |          |                                 | plain    |             |              |
+ client_id                                        | integer                  |           |          |                                 | plain    |             |              |
+ creator_id                                       | integer                  |           |          |                                 | plain    |             |              |
+ delivery_id                                      | integer                  |           |          |                                 | plain    |             |              |
+ job_scheduled_instance_id                        | integer                  |           |          |                                 | plain    |             |              |
+ latest_delivery_stage_id                         | integer                  |           |          |                                 | plain    |             |              |
+ reserved_by_id                                   | integer                  |           |          |                                 | plain    |             |              |
+ store_location_id                                | integer                  |           |          |                                 | plain    |             |              |
+ trigger_set_id                                   | integer                  |           |          |                                 | plain    |             |              |
+ user_id                                          | integer                  |           |          |                                 | plain    |             |              |
+ job_template_id                                  | integer                  |           |          |                                 | plain    |             |              |
+ external_data                                    | jsonb                    |           |          |                                 | extended |             |              |
+ initial_demand_source                            | character varying(32)    |           |          |                                 | extended |             |              |
+ is_upgraded_to_jyve_along                        | boolean                  |           |          |                                 | plain    |             |              |
+ upgraded_to_jyve_along_at                        | timestamp with time zone |           |          |                                 | plain    |             |              |
+ delivery_team_id                                 | integer                  |           |          |                                 | plain    |             |              |
+ jyve_along_team_id                               | integer                  |           |          |                                 | plain    |             |              |
+ completed_location_accuracy                      | double precision         |           |          |                                 | plain    |             |              |
+ completed_location_acquired_at                   | timestamp with time zone |           |          |                                 | plain    |             |              |
+ completed_location_service_enabled               | boolean                  |           |          |                                 | plain    |             |              |
+ started_location_accuracy                        | double precision         |           |          |                                 | plain    |             |              |
+ started_location_acquired_at                     | timestamp with time zone |           |          |                                 | plain    |             |              |
+ started_location_service_enabled                 | boolean                  |           |          |                                 | plain    |             |              |
+ credential_granted_id                            | integer                  |           |          |                                 | plain    |             |              |
+ client_expected_job_finish_before                | timestamp with time zone |           |          |                                 | plain    |             |              |
+ created_job_finish_before                        | timestamp with time zone |           |          |                                 | plain    |             |              |
+ created_job_start_after                          | timestamp with time zone |           |          |                                 | plain    |             |              |
+ original_payout                                  | numeric(6,2)             |           | not null |                                 | main     |             |              |
+ recommended_payout                               | numeric(6,2)             |           |          |                                 | main     |             |              |
+ time_expectation                                 | character varying(30)    |           | not null |                                 | extended |             |              |
+ payout_rate_config_id                            | integer                  |           |          |                                 | plain    |             |              |
+ is_virtual                                       | boolean                  |           | not null |                                 | plain    |             |              |
+ is_pre_launch                                    | boolean                  |           |          |                                 | plain    |             |              |
+ is_client_approved                               | boolean                  |           |          |                                 | plain    |             |              |
+ fee_contract_id                                  | integer                  |           |          |                                 | plain    |             |              |
+ new_job_template_id                              | integer                  |           |          |                                 | plain    |             |              |
+ status                                           | character varying(16)    |           |          |                                 | extended |             |              |
+ start_by                                         | timestamp with time zone |           |          |                                 | plain    |             |              |
+ contract_id                                      | integer                  |           |          |                                 | plain    |             |              |
+ statement_of_work_id                             | integer                  |           |          |                                 | plain    |             |              |
+ base_payout                                      | numeric(6,2)             |           |          |                                 | main     |             |              |
+ incentive_payout                                 | numeric(6,2)             |           |          |                                 | main     |             |              |
+ planned_start_after                              | timestamp with time zone |           |          |                                 | plain    |             |              |
+ planned_start_before                             | timestamp with time zone |           |          |                                 | plain    |             |              |
+ sent_push_notif_for_missed_planned_start_time_at | timestamp with time zone |           |          |                                 | plain    |             |              |
+ sent_push_notif_for_missed_start_by_time_at      | timestamp with time zone |           |          |                                 | plain    |             |              |
+ day_of_reminder_sent_at                          | timestamp with time zone |           |          |                                 | plain    |             |              |
+ confirmation_status                              | character varying(32)    |           |          |                                 | extended |             |              |
+ is_demo                                          | boolean                  |           | not null |                                 | plain    |             |              |
+Indexes:
+    "job_pkey" PRIMARY KEY, btree (id)
+    "job_brand_id_2b18b9ed" btree (brand_id)
+    "job_claimable_at_92e5f3b0" btree (claimable_at)
+    "job_client_id_f556d672" btree (client_id)
+    "job_completed_location_616b3c44_id" gist (completed_location)
+    "job_contract_id_489610ac" btree (contract_id)
+    "job_creator_id_65130a5e" btree (creator_id)
+    "job_credential_granted_id_fc3384d8" btree (credential_granted_id)
+    "job_date_canceled_6cf907ab" btree (date_canceled)
+    "job_date_completed_6c2d56c2" btree (date_completed)
+    "job_date_published_0cd6c5e8" btree (date_published)
+    "job_date_reactivated_3ba4f080" btree (date_reactivated)
+    "job_date_reserved_7b723686" btree (date_reserved)
+    "job_date_started_b4d2281d" btree (date_started)
+    "job_delivery_id_6bffebe8" btree (delivery_id)
+    "job_delivery_team_id_ff8bbbfe" btree (delivery_team_id)
+    "job_fee_contract_id_612245ad" btree (fee_contract_id)
+    "job_job_finish_before_087ebcf6" btree (job_finish_before)
+    "job_job_scheduled_instance_id_12e0d36d" btree (job_scheduled_instance_id)
+    "job_job_start_after_fd2c17b8" btree (job_start_after)
+    "job_job_template_id_81b3f973" btree (job_template_id)
+    "job_jyve_along_team_id_705b7dbc" btree (jyve_along_team_id)
+    "job_latest_delivery_stage_id_f76fb9b0" btree (latest_delivery_stage_id)
+    "job_new_job_template_id_b15528f7" btree (new_job_template_id)
+    "job_payout_rate_config_id_3e183a9b" btree (payout_rate_config_id)
+    "job_reserved_by_id_5587bdb5" btree (reserved_by_id)
+    "job_start_by_b802cf9b" btree (start_by)
+    "job_started_location_26e1b0f9_id" gist (started_location)
+    "job_statement_of_work_id_59364709" btree (statement_of_work_id)
+    "job_store_location_id_569bf3a6" btree (store_location_id)
+    "job_trigger_set_id_0ac716ea" btree (trigger_set_id)
+    "job_user_id_3f4b2c27" btree (user_id)
+    "jobs-store-job-start-finish" btree (store_location_id, job_start_after DESC, job_finish_before DESC)
+    "jyves-per-brand-per-user" btree (date_canceled, date_published, date_completed, user_id, brand_id)
+    "order_by_date_completed_d_id_a" btree (date_completed DESC, id)
+    "template_search_speedup" btree (is_template) WHERE is_template = true
+    "v2-stores-job-count-subqueries" btree (date_canceled DESC, user_id, store_location_id, date_published, job_finish_before DESC)
+    "v2-stores-stats-queries" btree (is_archived DESC, date_canceled, user_id, store_location_id, date_published, job_finish_before DESC)
+Check constraints:
+    "job_cases_check" CHECK (cases >= 0)
+    "job_estimated_time_check" CHECK (estimated_time >= 0)
+    "job_must_have_a_store_and_template_mustnt" CHECK (is_template AND store_location_id IS NULL OR NOT is_template AND store_location_id IS NOT NULL)
+    "job_version_check" CHECK (version >= 0)
+    "sow_and_contract_for_jobs_and_templates" CHECK (is_template AND contract_id IS NULL OR NOT is_template AND statement_of_work_id IS NULL)
+Foreign-key constraints:
+    "job_brand_id_2b18b9ed_fk_brand_id" FOREIGN KEY (brand_id) REFERENCES brand(id) DEFERRABLE INITIALLY DEFERRED
+    "job_client_id_f556d672_fk_brands_client_id" FOREIGN KEY (client_id) REFERENCES brands_client(id) DEFERRABLE INITIALLY DEFERRED
+    "job_contract_id_489610ac_fk_contracts_statementofworkversion_id" FOREIGN KEY (contract_id) REFERENCES contracts_statementofworkversion(id) DEFERRABLE INITIALLY DEFERRED
+    "job_creator_id_65130a5e_fk_auth_user_id" FOREIGN KEY (creator_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED
+    "job_credential_granted_id_fc3384d8_fk_credentials_credential_id" FOREIGN KEY (credential_granted_id) REFERENCES credentials_credential(id) DEFERRABLE INITIALLY DEFERRED
+    "job_delivery_id_6bffebe8_fk_delivery_id" FOREIGN KEY (delivery_id) REFERENCES delivery(id) DEFERRABLE INITIALLY DEFERRED
+    "job_delivery_team_id_ff8bbbfe_fk_jobs_team_id" FOREIGN KEY (delivery_team_id) REFERENCES jobs_team(id) DEFERRABLE INITIALLY DEFERRED
+    "job_fee_contract_id_612245ad_fk_pricing_feecontract_id" FOREIGN KEY (fee_contract_id) REFERENCES pricing_feecontract(id) DEFERRABLE INITIALLY DEFERRED
+    "job_job_scheduled_instan_12e0d36d_fk_job_sched" FOREIGN KEY (job_scheduled_instance_id) REFERENCES job_scheduled_instance(id) DEFERRABLE INITIALLY DEFERRED
+    "job_job_template_id_81b3f973_fk_job_id" FOREIGN KEY (job_template_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    "job_jyve_along_team_id_705b7dbc_fk_jobs_team_id" FOREIGN KEY (jyve_along_team_id) REFERENCES jobs_team(id) DEFERRABLE INITIALLY DEFERRED
+    "job_latest_delivery_stage_id_f76fb9b0_fk_delivery_stage_id" FOREIGN KEY (latest_delivery_stage_id) REFERENCES delivery_stage(id) DEFERRABLE INITIALLY DEFERRED
+    "job_new_job_template_id_b15528f7_fk_job_template_id" FOREIGN KEY (new_job_template_id) REFERENCES job_template(id) DEFERRABLE INITIALLY DEFERRED
+    "job_payout_rate_config_i_3e183a9b_fk_payouts_p" FOREIGN KEY (payout_rate_config_id) REFERENCES payouts_payoutrateconfig(id) DEFERRABLE INITIALLY DEFERRED
+    "job_reserved_by_id_5587bdb5_fk_auth_user_id" FOREIGN KEY (reserved_by_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED
+    "job_statement_of_work_id_59364709_fk_contracts" FOREIGN KEY (statement_of_work_id) REFERENCES contracts_statementofwork(id) DEFERRABLE INITIALLY DEFERRED
+    "job_store_location_id_569bf3a6_fk_store_location_id" FOREIGN KEY (store_location_id) REFERENCES store_location(id) DEFERRABLE INITIALLY DEFERRED
+    "job_trigger_set_id_0ac716ea_fk_trigger_set_id" FOREIGN KEY (trigger_set_id) REFERENCES trigger_set(id) DEFERRABLE INITIALLY DEFERRED
+    "job_user_id_3f4b2c27_fk_auth_user_id" FOREIGN KEY (user_id) REFERENCES auth_user(id) DEFERRABLE INITIALLY DEFERRED
+Referenced by:
+    TABLE "brand_notes" CONSTRAINT "brand_notes_job_id_e2ca9a35_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "calendar_event" CONSTRAINT "calendar_event_job_id_b34da75a_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "job_credential_requirements" CONSTRAINT "job_credential_requirements_job_id_5cc64491_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "job_dashboard_task_sets" CONSTRAINT "job_dashboard_task_sets_job_id_36e55726_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "job_delivery_loads" CONSTRAINT "job_delivery_loads_job_id_ada1d258_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "job" CONSTRAINT "job_job_template_id_81b3f973_fk_job_id" FOREIGN KEY (job_template_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "job_set_membership" CONSTRAINT "job_set_membership_job_id_0bb6ed90_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "job_task" CONSTRAINT "job_task_job_id_eb750870_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "jobs_customerjobsupportissue" CONSTRAINT "jobs_customerjobsupportissue_job_id_6fdb9f74_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "jobs_jobaudit" CONSTRAINT "jobs_jobaudit_job_id_0b16cc3a_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "jobs_jobexemption" CONSTRAINT "jobs_jobexemption_job_id_70865300_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "jobs_jobfeedback" CONSTRAINT "jobs_jobfeedback_job_id_47560142_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "jobs_jobreporturl" CONSTRAINT "jobs_jobreporturl_job_id_1ce8ae79_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "jobs_jobstatssnapshot" CONSTRAINT "jobs_jobstatssnapshot_job_id_b4656aff_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "jobs_jobtemplateproduct" CONSTRAINT "jobs_jobtemplateproduct_job_id_8d692bf5_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "matching_match" CONSTRAINT "matching_match_job_id_aeda778d_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "matching_matchactivity" CONSTRAINT "matching_matchactivity_job_id_3ec9623f_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "notifications_availablejyvenotificationlog" CONSTRAINT "notifications_availab_job_id_28c6f935_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "notifications_schedulednotificationdebug" CONSTRAINT "notifications_schedul_job_id_78d58378_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "notifications_schedulednotification" CONSTRAINT "notifications_schedulednotification_job_id_28ed4191_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE ""order"" CONSTRAINT "order_job_id_c5d72cff_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "payments_bonus" CONSTRAINT "payments_bonus_job_id_5781d806_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "payments_payment" CONSTRAINT "payments_payment_job_id_08318cb9_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "products_productvalidation" CONSTRAINT "products_productvalidation_job_id_35e5bcdf_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "products_productvalidation" CONSTRAINT "products_productvalidation_job_template_id_f352a8f6_fk_job_id" FOREIGN KEY (job_template_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "schedules_jobschedule" CONSTRAINT "schedules_jobschedule_job_template_id_08aeb56d_fk_job_id" FOREIGN KEY (job_template_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "schedules_jobschedulerun" CONSTRAINT "schedules_jobschedulerun_job_id_99660af4_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "scorecard_infraction" CONSTRAINT "scorecard_infraction_job_id_d5a8b102_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "triggers_triggerdebug" CONSTRAINT "triggers_triggerdebug_job_id_206922e5_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+    TABLE "users_calendar_event" CONSTRAINT "users_calendar_event_job_id_d62b1dcb_fk_job_id" FOREIGN KEY (job_id) REFERENCES job(id) DEFERRABLE INITIALLY DEFERRED
+Access method: heap
+Options: autovacuum_vacuum_scale_factor=0.0, autovacuum_vacuum_threshold=1000, autovacuum_analyze_scale_factor=0.0, autovacuum_analyze_threshold=1000

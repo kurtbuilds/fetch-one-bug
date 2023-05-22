@@ -1,0 +1,12 @@
+ \d+ test_post;
+                                                        Table "public.test_post"
+ Column  |  Type   | Collation | Nullable |                Default                | Storage  | Compression | Stats target | Description
+---------+---------+-----------+----------+---------------------------------------+----------+-------------+--------------+-------------
+ id      | integer |           | not null | nextval('test_post_id_seq'::regclass) | plain    |             |              |
+ title   | text    |           |          |                                       | extended |             |              |
+ user_id | integer |           |          |                                       | plain    |             |              |
+Indexes:
+    "test_post_pkey" PRIMARY KEY, btree (id)
+Foreign-key constraints:
+    "fk_user" FOREIGN KEY (user_id) REFERENCES test_user(id)
+Access method: heap
